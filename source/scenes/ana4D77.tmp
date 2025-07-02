@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://d4dcwr8wroibr"]
+
+[ext_resource type="Script" path="res://script/hour_needle.gd" id="1_atl1i"]
+[ext_resource type="Texture2D" uid="uid://bkut66dneh73h" path="res://graphics/analog_clock_background.svg" id="1_tut55"]
+[ext_resource type="Texture2D" uid="uid://dfbexgn2w2g5q" path="res://graphics/analog_clock_base.svg" id="2_0e8gj"]
+[ext_resource type="Texture2D" uid="uid://cl6w5tvce7gdc" path="res://graphics/hour_needle.svg" id="3_5mt3e"]
+[ext_resource type="Texture2D" uid="uid://bqennfpd314xc" path="res://graphics/minute_needle.svg" id="5_3pnrw"]
+[ext_resource type="Script" path="res://script/minute_needle.gd" id="6_mriu6"]
+
+[sub_resource type="GDScript" id="GDScript_dl8s8"]
+script/source = "extends Node
+
+class_name GlobalDate
+   
+@onready var global_date = Time.get_datetime_dict_from_system();
+@onready var hour_degree = global_date.hour * 30;
+@onready var minute_degree = global_date.minute * 6;
+@onready var second_degree = global_date.second * 6;
+	
+func _process(delta):
+	pass
+"
+
+[node name="Node2D" type="Node2D"]
+script = SubResource("GDScript_dl8s8")
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(320, 240)
+scale = Vector2(0.16, 0.12)
+texture = ExtResource("1_tut55")
+
+[node name="analog_clock_base" type="Sprite2D" parent="."]
+position = Vector2(320, 240)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("2_0e8gj")
+
+[node name="hour_needle" type="Sprite2D" parent="."]
+position = Vector2(320, 240)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("3_5mt3e")
+script = ExtResource("1_atl1i")
+
+[node name="minute_needle" type="Sprite2D" parent="."]
+position = Vector2(320, 240)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("5_3pnrw")
+script = ExtResource("6_mriu6")

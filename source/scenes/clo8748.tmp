@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://d4dcwr8wroibr"]
+
+[ext_resource type="Script" path="res://scripts/global_variables.gd" id="1_aoswa"]
+[ext_resource type="Script" path="res://scripts/clock_analog.gd" id="1_yskd2"]
+[ext_resource type="Texture2D" uid="uid://ctq3yh8xmwocg" path="res://images/low/clock/hour_needle.png" id="3_i43w5"]
+[ext_resource type="Texture2D" uid="uid://cps1n5m1cd4bj" path="res://images/low/clock/minute_needle.png" id="4_wlhdw"]
+[ext_resource type="Texture2D" uid="uid://bw2jqbepjmmri" path="res://images/low/clock/second_needle.png" id="5_3d23d"]
+
+[node name="ClockAnalog" type="Node"]
+script = ExtResource("1_aoswa")
+
+[node name="MainCamera" type="Camera2D" parent="."]
+offset = Vector2(2048, 2048)
+
+[node name="Analog" type="Node2D" parent="."]
+position = Vector2(2048, 2048)
+script = ExtResource("1_yskd2")
+
+[node name="BaseNumber" type="Sprite2D" parent="Analog"]
+
+[node name="HourNeedle" type="Sprite2D" parent="Analog"]
+texture = ExtResource("3_i43w5")
+
+[node name="MinuteNeedle" type="Sprite2D" parent="Analog"]
+texture = ExtResource("4_wlhdw")
+
+[node name="SecondNeedle" type="Sprite2D" parent="Analog"]
+texture = ExtResource("5_3d23d")
+
+[node name="AmPm" type="Sprite2D" parent="Analog"]
+centered = false

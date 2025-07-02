@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://d4dcwr8wroibr"]
+
+[ext_resource type="Texture2D" uid="uid://bkut66dneh73h" path="res://graphics/analog_clock_background.svg" id="1_tut55"]
+[ext_resource type="Texture2D" uid="uid://dfbexgn2w2g5q" path="res://graphics/analog_clock_base.svg" id="2_0e8gj"]
+[ext_resource type="Texture2D" uid="uid://dn0kcdjsqcgmp" path="res://graphics/analog_clock_second_needle.svg" id="3_b08sa"]
+[ext_resource type="Script" path="res://scene/analog_clock_second_needle.gd" id="4_o264s"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="analog_clock_background" type="Sprite2D" parent="."]
+position = Vector2(320, 240)
+scale = Vector2(0.16, 0.12)
+texture = ExtResource("1_tut55")
+
+[node name="analog_clock_base" type="Sprite2D" parent="."]
+position = Vector2(320, 240)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("2_0e8gj")
+
+[node name="analog_clock_second_needle" type="Sprite2D" parent="."]
+position = Vector2(320, 150)
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("3_b08sa")
+script = ExtResource("4_o264s")

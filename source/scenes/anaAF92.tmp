@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://d4dcwr8wroibr"]
+
+[ext_resource type="Script" path="res://script/hour_needle.gd" id="1_atl1i"]
+[ext_resource type="Texture2D" uid="uid://bkut66dneh73h" path="res://graphics/analog_clock_background.svg" id="1_tut55"]
+[ext_resource type="Texture2D" uid="uid://dfbexgn2w2g5q" path="res://graphics/analog_clock_base.svg" id="2_0e8gj"]
+[ext_resource type="Texture2D" uid="uid://cl6w5tvce7gdc" path="res://graphics/hour_needle.svg" id="3_5mt3e"]
+[ext_resource type="Texture2D" uid="uid://bqennfpd314xc" path="res://graphics/minute_needle.svg" id="5_3pnrw"]
+[ext_resource type="Script" path="res://script/minute_needle.gd" id="6_mriu6"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(320, 240)
+scale = Vector2(0.16, 0.12)
+texture = ExtResource("1_tut55")
+
+[node name="analog_clock_base" type="Sprite2D" parent="."]
+position = Vector2(320, 240)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("2_0e8gj")
+
+[node name="hour_needle" type="Sprite2D" parent="."]
+position = Vector2(320, 240)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("3_5mt3e")
+script = ExtResource("1_atl1i")
+
+[node name="minute_needle" type="Sprite2D" parent="."]
+position = Vector2(320, 240)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("5_3pnrw")
+script = ExtResource("6_mriu6")
