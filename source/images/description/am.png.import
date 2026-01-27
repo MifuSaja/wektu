@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://canwvf4kr76an"
-path="res://godot/imported/wektu_saiki_icon_all.png-16c8b9ce678dd56ff2e4447807d2da36.ctex"
+uid="uid://ditu72j5qk0v4"
+path="res://godot/imported/am.png-6bea2e09daf23f7f31f56a291bca7fd4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/icon/wektu_saiki_icon_all.png"
-dest_files=["res://godot/imported/wektu_saiki_icon_all.png-16c8b9ce678dd56ff2e4447807d2da36.ctex"]
+source_file="res://images/description/am.png"
+dest_files=["res://godot/imported/am.png-6bea2e09daf23f7f31f56a291bca7fd4.ctex"]
 
 [params]
 

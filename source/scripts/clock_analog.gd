@@ -26,9 +26,6 @@ extends Node
 
 # Graphic quality variables.
 @onready var size
-@onready var quality
-@onready var divider
-@onready var scale
 @onready var path
 @onready var zoom
 
@@ -45,38 +42,28 @@ extends Node
 func _ready():
 	
 	# Setting up the scaling factor and suitable image based on the screen size.
-	size = find_size(native_width, native_height)
-	quality = set_quality(size)
-	divider = set_divider(quality)
-	scale = float(size) / float(divider)
-	
+	if native_width > native_height:
+		size = find_size(native_width, native_height)
+	else:
+		size = find_size(native_height, native_width)
+		
 	# Load the images.
-	# BaseNumber.
-	path = path_name(quality, "clock", "base_number")
-	base_number.texture = load(path)
-	base_number.scale = Vector2(scale, scale)
-	
-	# HourNeedle.
-	path = path_name(quality, "clock", "hour_needle")
-	hour_needle.texture = load(path)
-	hour_needle.scale = Vector2(scale, scale)
-	
-	# MinuteNeedle.
-	path = path_name(quality, "clock", "minute_needle")
-	minute_needle.texture = load(path)
-	minute_needle.scale = Vector2(scale, scale)
-	
-	# SecondNeedle.
-	path = path_name(quality, "clock", "second_needle")
-	second_needle.texture = load(path)
-	second_needle.scale = Vector2(scale, scale)
+	base_number.texture = load("res://images/clock/base_number.png")
+	hour_needle.texture = load("res://images/clock/hour_needle.png")
+	minute_needle.texture = load("res://images/clock/minute_needle.png")
+	second_needle.texture = load("res://images/clock/second_needle.png")
 	
 	# Determine the day and the night.
 	am_pm_status()
 	
 	# Setting up the camera zoom.
-	zoom = 4096.0 / float(size)
+	zoom = 1024 / float(size)
 	main_camera.zoom = Vector2(zoom, zoom)
+	
+	# Set window mode for desktop platform.
+	if platform == "Windows" || platform == "Linux":
+		window.set_mode(0)
+		window.size = Vector2(size/2, size/2)
 	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -132,47 +119,14 @@ func find_size(width, height):
 	else:
 		return width
 
-
-# Set the quality based on screen size.
-func set_quality(size):
-	if size > 2048:
-		return "ultra"
-	elif size > 1024:
-		return "high"
-	elif size > 512:
-		return "mid"
-	else:
-		return "low"
-
-
-# Set the divide number for image scaling and zoom based on quality.
-func set_divider(quality):
-	match(quality):
-		"ultra":
-			return 4096
-		"high":
-			return 2048
-		"mid":
-			return 1024
-		"low":
-			return 512
-
-
-# Specify the filepath.
-func path_name(x, y, z):
-	return "res://images/" + x + "/" + y + "/" + z + ".png"
-
-
 # Setting up the AmPm node.
 func am_pm_status():	
 	if Time.get_datetime_dict_from_system().hour >= 12:
-		path = path_name(quality, "description", "pm")
+		am_pm.texture = load("res://images/description/pm.png")
 	else:
-		path = path_name(quality, "description", "am")
-	am_pm.texture = load(path)	
-	am_pm.scale = Vector2(scale, scale)
+		am_pm.texture = load("res://images/description/am.png")
 	
 	# Setting up the AmPm image and position.
-	am_pm_x = (size /2 ) - (am_pm.texture.get_width() * scale)
-	am_pm_y = (size / 2) - (am_pm.texture.get_height() * scale)
+	am_pm_x = (size / 2 ) - (am_pm.texture.get_width())
+	am_pm_y = (size / 2) - (am_pm.texture.get_height())
 	am_pm.position = Vector2(am_pm_x, am_pm_y)

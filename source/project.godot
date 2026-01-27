@@ -8,24 +8,30 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="Wektu"
-config/version="1.0.0.1"
+config/version="1.0.1"
 run/main_scene="res://scenes/clock_analog.tscn"
-config/features=PackedStringArray("4.5", "GL Compatibility")
+config/use_hidden_project_data_directory=false
+config/use_custom_user_dir=true
+config/features=PackedStringArray("4.6", "GL Compatibility")
 run/low_processor_mode=true
 run/delta_smoothing=false
 boot_splash/show_image=false
-boot_splash/fullsize=false
+boot_splash/stretch_mode=0
 boot_splash/use_filter=false
 config/icon="res://images/icon/wektu_saiki_icon_all.png"
 config/windows_native_icon="res://images/icon/wektu_saiki_icon_windows.ico"
 
 [display]
 
-window/size/viewport_width=4096
-window/size/viewport_height=4096
+window/size/viewport_width=1024
+window/size/viewport_height=1024
 window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
