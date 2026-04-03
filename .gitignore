@@ -49,8 +49,8 @@ release/Wektu_x86_64_android_v1.0.0.0.apk
 release/Wektu_x86_64_win.exe
 release/Wektu_x86_64_win_v1.0.0.0.exe
 release/Wektu_x86_android_v1.0.0.0.apk
-extern/Wektu_Debug.jks
-extern/Wektu_Release.jks
+extern/wektu_debug.jks
+extern/wektu_release.jks
 release/Wektu.x86_64
 release/Wektu_arm64-v8a.apk
 release/Wektu_arm64-v8a.apk.idsig
