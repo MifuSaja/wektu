@@ -2,37 +2,33 @@ extends Node
 
 # Setting up the variables
 # Analog node variables.
-@onready var base_number = $Analog/BaseNumber
-@onready var hour_needle = $Analog/HourNeedle
-@onready var minute_needle = $Analog/MinuteNeedle
-@onready var second_needle = $Analog/SecondNeedle
-@onready var am_pm = $Analog/AmPm
-@onready var main_camera = $MainCamera
+@onready var clock_face = $Analog/ClockFace
+@onready var needle_hour = $Analog/NeedleHour
+@onready var needle_minute = $Analog/NeedleMinute
+@onready var needle_second = $Analog/NeedleSecond
+@onready var period = $Analog/Period
+@onready var view_main = $ViewMain
+@onready var sound_effect_01 = $SoundEffect01
+@onready var sound_effect_02 = $SoundEffect02
 
 # Screen related variables.
 @onready var native_width = DisplayServer.screen_get_size().x
 @onready var native_height = DisplayServer.screen_get_size().y
 @onready var window = get_window()
 @onready var window_mode
+@onready var dark_mode = false
 
 # Time variables.
 @onready var global_date
 @onready var global_time
 
 # Rotation variables.
-@onready var hour_degree
-@onready var minute_degree
-@onready var second_degree
+@onready var degree_hour
+@onready var degree_minute
+@onready var degree_second
 
-# Graphic quality variables.
-@onready var size
-@onready var path
-@onready var zoom
-
-# Positioning AmPm variables.
-@onready var am_pm_x
-@onready var am_pm_y
-@onready var am_image
+# Display detection.
+@onready var display_size
 
 # Check the operating system.
 @onready var platform = OS.get_name()
@@ -41,30 +37,27 @@ extends Node
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
-	# Setting up the scaling factor and suitable image based on the screen size.
+	# Setting up the scaling factor for window mode.
 	if native_width > native_height:
-		size = find_size(native_width, native_height)
+		display_size = native_height
 	else:
-		size = find_size(native_height, native_width)
+		display_size = native_width
 		
 	# Load the images.
-	base_number.texture = load("res://images/clock/base_number.png")
-	hour_needle.texture = load("res://images/clock/hour_needle.png")
-	minute_needle.texture = load("res://images/clock/minute_needle.png")
-	second_needle.texture = load("res://images/clock/second_needle.png")
+	clock_face.texture = load("res://images/clock/wektu_clock_black_face_default.png")
+	needle_hour.texture = load("res://images/clock/wektu_needle_black_hour_default.png")
+	needle_minute.texture = load("res://images/clock/wektu_needle_black_minute_default.png")
+	needle_second.texture = load("res://images/clock/wektu_needle_black_second_default.png")
 	
 	# Determine the day and the night.
-	am_pm_status()
-	
-	# Setting up the camera zoom.
-	zoom = 1024 / float(size)
-	main_camera.zoom = Vector2(zoom, zoom)
+	period_status()
 	
 	# Set window mode for desktop platform.
 	if platform == "Windows" || platform == "Linux":
 		window.set_mode(0)
-		window.size = Vector2(size/2, size/2)
+		window.size = Vector2(display_size/2, display_size/2)
 	
+	print(RenderingServer.get_default_clear_color())
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -75,30 +68,34 @@ func _process(_delta):
 	
 	# Set the rotation degrees for all the needle using dictionary.
 	# Set the base degrees.
-	hour_degree = global_date.hour * 30
-	minute_degree = global_date.minute * 6
-	second_degree = global_date.second * 6
+	degree_hour = global_date.hour * 30
+	degree_minute = global_date.minute * 6
+	degree_second = global_date.second * 6
 	
 	# Set the rotation degrees.
-	hour_needle.rotation_degrees = hour_degree + (minute_degree / 12)
-	minute_needle.rotation_degrees = minute_degree + (second_degree / 60)
-	second_needle.rotation_degrees = second_degree
+	needle_hour.rotation_degrees = degree_hour + (degree_minute / 12)
+	needle_minute.rotation_degrees = degree_minute + (degree_second / 60)
+	needle_second.rotation_degrees = degree_second
 	
 	# Change the day and night status at the exact time using string.
 	if global_time == "12:00:00" || global_time == "00:00:00":
-		am_pm_status()
-
+		period_status()
 
 	# Called when an input detected.
-	if Input.is_action_just_released("exit_button"):
+	if Input.is_action_just_released("exit_button"):		
 		get_tree().quit()
-	
-	if platform == "Windows" || platform == "Linux":		
-		if Input.is_action_just_released("change_window_mode"):
-			change_window_mode()
+		
+	if Input.is_action_just_released("dark_mode_button"):
+		sound_effect_01.play()
+		switch_dark_mode()		
+				
+	if platform == "Windows" || platform == "Linux":				
+		if Input.is_action_just_released("window_mode_button"):		
+			sound_effect_02.play()
+			switch_window_mode()
 
-
-func change_window_mode():
+# Switch function for the window mode.
+func switch_window_mode():
 	
 	# Get the window mode information.
 	window_mode = window.get_mode()
@@ -109,24 +106,40 @@ func change_window_mode():
 			window.size = Vector2(native_width, native_height)
 		3: # Switch to windowed.
 			window.set_mode(0)
-			window.size = Vector2(size/2, size/2)
+			window.size = Vector2(display_size/2, display_size/2)
+			
+# Switch to dark mode and vice versa. 			
+func switch_dark_mode():		
+	match dark_mode:
+		true:
+			clock_face.texture = load("res://images/clock/wektu_clock_black_face_default.png")
+			needle_hour.texture = load("res://images/clock/wektu_needle_black_hour_default.png")
+			needle_minute.texture = load("res://images/clock/wektu_needle_black_minute_default.png")
+			needle_second.texture = load("res://images/clock/wektu_needle_black_second_default.png")
+			dark_mode = false
+			RenderingServer.set_default_clear_color(Color(1.0, 1.0, 1.0, 1.0))
+		false:
+			clock_face.texture = load("res://images/clock/wektu_clock_white_face_default.png")
+			needle_hour.texture = load("res://images/clock/wektu_needle_white_hour_default.png")
+			needle_minute.texture = load("res://images/clock/wektu_needle_white_minute_default.png")
+			needle_second.texture = load("res://images/clock/wektu_needle_white_second_default.png")
+			dark_mode = true
+			RenderingServer.set_default_clear_color(Color(0.0, 0.0, 0.0, 1.0))		
+	period_status()
 
-
-# find the square size for the image calculation.
-func find_size(width, height):
-	if width > height:
-		return height
-	else:
-		return width
-
-# Setting up the AmPm node.
-func am_pm_status():	
+# Setting up the Period image and position.
+func period_status():	
 	if Time.get_datetime_dict_from_system().hour >= 12:
-		am_pm.texture = load("res://images/description/pm.png")
+		match dark_mode:
+			true:
+				period.texture = load("res://images/period/wektu_period_white_pm_default.png")
+			false:
+				period.texture = load("res://images/period/wektu_period_black_pm_default.png")
 	else:
-		am_pm.texture = load("res://images/description/am.png")
+		match dark_mode:
+			true:
+				period.texture = load("res://images/period/wektu_period_white_am_default.png")
+			false:
+				period.texture = load("res://images/period/wektu_period_black_am_default.png")
 	
-	# Setting up the AmPm image and position.
-	am_pm_x = (size / 2 ) - (am_pm.texture.get_width())
-	am_pm_y = (size / 2) - (am_pm.texture.get_height())
-	am_pm.position = Vector2(am_pm_x, am_pm_y)
+	period.position = Vector2(512 - period.texture.get_width(), 512 - period.texture.get_height())

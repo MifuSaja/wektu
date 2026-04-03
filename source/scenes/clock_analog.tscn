@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://d4dcwr8wroibr"]
 
 [ext_resource type="Script" uid="uid://d1opa5b7yflhd" path="res://scripts/clock_analog.gd" id="1_yskd2"]
+[ext_resource type="AudioStream" uid="uid://ds6i65y1a4art" path="res://audio/effect_01.mp3" id="2_8w8pc"]
+[ext_resource type="AudioStream" uid="uid://u38oifypqng0" path="res://audio/effect_02.mp3" id="3_mlu8a"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ywm8d"]
 load_path = "res://godot/imported/hour_needle.png-2cdbb943f41fc3d94a5245adb6defe87.ctex"
@@ -14,22 +16,30 @@ load_path = "res://godot/imported/second_needle.png-9d4108f194c6b7f91cb75ad70c33
 [node name="ClockAnalog" type="Node" unique_id=1697772706]
 script = ExtResource("1_yskd2")
 
-[node name="MainCamera" type="Camera2D" parent="." unique_id=318195730]
-offset = Vector2(2048, 2048)
-
 [node name="Analog" type="Node2D" parent="." unique_id=1100523155]
 position = Vector2(2048, 2048)
 
-[node name="BaseNumber" type="Sprite2D" parent="Analog" unique_id=1615051872]
+[node name="ClockFace" type="Sprite2D" parent="Analog" unique_id=1615051872]
 
-[node name="HourNeedle" type="Sprite2D" parent="Analog" unique_id=1658682255]
+[node name="NeedleHour" type="Sprite2D" parent="Analog" unique_id=1658682255]
 texture = SubResource("CompressedTexture2D_ywm8d")
 
-[node name="MinuteNeedle" type="Sprite2D" parent="Analog" unique_id=2032011957]
+[node name="NeedleMinute" type="Sprite2D" parent="Analog" unique_id=2032011957]
 texture = SubResource("CompressedTexture2D_8w8pc")
 
-[node name="SecondNeedle" type="Sprite2D" parent="Analog" unique_id=1344336825]
+[node name="NeedleSecond" type="Sprite2D" parent="Analog" unique_id=1344336825]
 texture = SubResource("CompressedTexture2D_mlu8a")
 
-[node name="AmPm" type="Sprite2D" parent="Analog" unique_id=1069004759]
+[node name="Period" type="Sprite2D" parent="Analog" unique_id=1069004759]
 centered = false
+
+[node name="CameraMain" type="Camera2D" parent="." unique_id=318195730]
+offset = Vector2(2048, 2048)
+
+[node name="SoundEffect01" type="AudioStreamPlayer2D" parent="." unique_id=1893320206]
+position = Vector2(2048, 2048)
+stream = ExtResource("2_8w8pc")
+
+[node name="SoundEffect02" type="AudioStreamPlayer2D" parent="." unique_id=1713499213]
+position = Vector2(800, 1113)
+stream = ExtResource("3_mlu8a")

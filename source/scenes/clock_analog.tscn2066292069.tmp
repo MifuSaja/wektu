@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://d4dcwr8wroibr"]
+
+[ext_resource type="Script" uid="uid://d1opa5b7yflhd" path="res://scripts/clock_analog.gd" id="1_yskd2"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ywm8d"]
+load_path = "res://godot/imported/hour_needle.png-2cdbb943f41fc3d94a5245adb6defe87.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8w8pc"]
+load_path = "res://godot/imported/minute_needle.png-c48ebd74588c9a3a43ec26d38a8cacc3.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mlu8a"]
+load_path = "res://godot/imported/second_needle.png-9d4108f194c6b7f91cb75ad70c33445e.ctex"
+
+[node name="ClockAnalog" type="Node" unique_id=1697772706]
+script = ExtResource("1_yskd2")
+
+[node name="MainCamera" type="Camera2D" parent="." unique_id=318195730]
+offset = Vector2(2048, 2048)
+
+[node name="Analog" type="Node2D" parent="." unique_id=1100523155]
+position = Vector2(2048, 2048)
+
+[node name="BaseNumber" type="Sprite2D" parent="Analog" unique_id=1615051872]
+
+[node name="HourNeedle" type="Sprite2D" parent="Analog" unique_id=1658682255]
+texture = SubResource("CompressedTexture2D_ywm8d")
+
+[node name="MinuteNeedle" type="Sprite2D" parent="Analog" unique_id=2032011957]
+texture = SubResource("CompressedTexture2D_8w8pc")
+
+[node name="SecondNeedle" type="Sprite2D" parent="Analog" unique_id=1344336825]
+texture = SubResource("CompressedTexture2D_mlu8a")
+
+[node name="AmPm" type="Sprite2D" parent="Analog" unique_id=1069004759]
+centered = false
