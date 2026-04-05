@@ -13,7 +13,7 @@ Control:
   - Mouse: Middle-Click
   - Joypad: Select
     
-3.Exit the application:
+3. Exit the application:
   - Keyboard: Esc
   - Mouse: Right-Click
   - Joypad: Start
