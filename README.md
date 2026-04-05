@@ -1,6 +1,6 @@
 A simple analog clock to display current time, based on the host operating system. No internet connection required.
 
-Control:
+Controls:
 
 1. Switch the black and white color:
   - Keyboard: Space
