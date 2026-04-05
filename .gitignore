@@ -34,8 +34,6 @@ source/android/build/templates/windows_release_x86_32.exe
 source/android/build/templates/windows_release_x86_32_console.exe
 source/android/build/templates/windows_release_x86_64.exe
 source/android/build/templates/windows_release_x86_64_console.exe
-extern/wektu_debug.jks
-extern/wektu_release.jks
 release/Wektu.x86_64
 release/Wektu_arm64-v8a.apk
 release/Wektu_arm64-v8a.apk.idsig
