@@ -1,4 +1,5 @@
-A simple analog clock to display current time, based on the host operating system. No internet connection required.
+Open source and cross platform analog clock based on your devices. Available for Windows, Linux, and Android.
+
 
 Controls:
 
@@ -17,5 +18,6 @@ Controls:
   - Keyboard: Esc
   - Mouse: Right-Click
   - Joypad: Start
+  
 
 Contact: mifusaja@gmail.com  
