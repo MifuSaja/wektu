@@ -1,21 +1,20 @@
 Open source and cross platform analog clock based on your devices. Available for Windows, Linux, and Android.
 <hr>
-Windows (Screenshots)
+<b>Windows (Screenshots)</b>
 <br><br>
-<img src="https://github.com/MifuSaja/wektu/blob/main/extern/screenshots/windowed_light.png" style="width: 480px ; height: 270px">
+<img src="https://github.com/MifuSaja/wektu/blob/main/extern/screenshots/windowed_light_preview.png">
 <br>
-<img src="https://github.com/MifuSaja/wektu/blob/main/extern/screenshots/windowed_dark.png" style="width: 480px ; height: 270px">
+<img src="https://github.com/MifuSaja/wektu/blob/main/extern/screenshots/windowed_dark_preview.png">
 <br>
 <hr>
-Linux (Screenshots)
+<b>Linux (Screenshots)</b>
 <br><br>
 Coming Soon!
 <br>
 <hr>
-Android (Screenshots)
+<b>Android (Screenshots)</b>
 <br><br>
-<img src="https://github.com/MifuSaja/wektu/blob/main/extern/screenshots/android_light.png" style="width: 240px">
-<img src="https://github.com/MifuSaja/wektu/blob/main/extern/screenshots/android_dark.png" style="width: 240px">
+<img src="https://github.com/MifuSaja/wektu/blob/main/extern/screenshots/android_all_preview.png">
 <br>
 <hr>
 <br>
@@ -44,5 +43,28 @@ Controls:
   </ul>
 </ol>
 <hr>
+<b>Download Links:</b>
+<br><br>
+<ol>
+  <li><b>Windows</b></li>
+  <ul>
+    <li><a href="https://github.com/MifuSaja/wektu/releases/download/v1.0.0.0/Wektu_x86_32_win_v1.0.0.0.exe">x32 (32-Bit)</a></li>
+    <li><a href="https://github.com/MifuSaja/wektu/releases/download/v1.0.0.0/Wektu_x86_64_win_v1.0.0.0.exe">x64 (64-Bit)</a></li>
+    <li><a href="https://github.com/MifuSaja/wektu/releases/download/v1.0.0.0/Wektu_arm64_win_v1.0.0.0.exe">ARM (64-Bit)</a></li>
+  </ul>
+  <li><b>Linux</b></li>
+  <ul>
+    <li><a href="https://github.com/MifuSaja/wektu/releases/download/v1.0.0.0/Wektu_x86_64_linux_v1.0.0.0.x86_64">x64 (64-Bit)</a></li>
+    <li><a href="https://github.com/MifuSaja/wektu/releases/download/v1.0.0.0/Wektu_arm64_linux_v1.0.0.0.arm64">ARM (64-Bit)</a></li>
+  </ul>
+  <li><b>Android</b></li>
+  <ul>
+    <li><a href="https://github.com/MifuSaja/wektu/releases/download/v1.0.0.0/Wektu_armeabi-v7a_android_v1.0.0.0.apk">ARM (32-Bit)</a></li>
+    <li><a href="https://github.com/MifuSaja/wektu/releases/download/v1.0.0.0/Wektu_arm64-v8a_android_v1.0.0.0.apk">ARM (64-Bit)</a></li>
+  </ul>
+</ol>
+<hr>
 <br>
-Contact: mifusaja@gmail.com  
+<b>Contact:</b>
+<br>
+<a href="mailto:mifusaja@gmail.com">mifusaja@gmail.com</a>
