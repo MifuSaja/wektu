@@ -15,8 +15,8 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Wektu"
-config/description="An application to show the current time with analog system."
-config/version="2.0.0.0"
+config/description="A simple  analog clock."
+config/version="1.0.0"
 run/main_scene="res://scenes/clock_analog.tscn"
 config/use_hidden_project_data_directory=false
 config/use_custom_user_dir=true
